@@ -1,12 +1,21 @@
-import { ApoloServer, gql } from 'apollo-server'
+const { ApolloServer, gql } = require('apollo-server')
 
 const typeDefs = gql`
-
+    # Pontos de entrada da sua API!
+    type Query {
+        ola: String
+    }
 `
 
-const resolvers = {}
+const resolvers = {
+    Query: {
+        ola() {
+            return 'Olá Mundo!'
+        }
+    }
+}
 
-const server = new ApoloServer({
+const server = new ApolloServer({
     typeDefs,
     resolvers
 })
