@@ -4,19 +4,39 @@ const typeDefs = gql`
     scalar Date
 
     # Pontos de entrada da sua API!
+    type Usuario {
+        id: ID
+        nome: String!
+        email: String!
+        idade: Int
+        salario: Float
+        vip: Boolean
+    }
+
     type Query {
-        ola: String
-        horaAtual: Date
+        ola: String!
+        horaAtual: Date!
+        usuarioLogado: Usuario
     }
 `
 
 const resolvers = {
     Query: {
         ola() {
-            return 'Olá Mundo!'
+            return 'Olá Mundo! Bom dia!'
         },
         horaAtual() {
             return new Date
+        },
+        usuarioLogado() {
+            return {
+                id: 1,
+                nome: 'Ana da Web',
+                email: 'anadaweb@email.com',
+                idade: 23,
+                salario: 1234.56,
+                vip: true
+            }
         }
     }
 }
