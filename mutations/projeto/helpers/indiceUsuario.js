@@ -1,3 +1,5 @@
+const { usuarios } = require('../data/db')
+
 module.exports = {
     indiceUsuario(filtro) {
         if (!filtro) return -1
