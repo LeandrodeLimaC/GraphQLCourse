@@ -1,25 +1,34 @@
 const { ApolloServer, gql } = require('apollo-server')
 
 const perfis = [
-    { id: 1, nome: 'Administrator' },
-    { id: 2, nome: 'Comum' }
+    { id: 1, nome: 'Administrator', permissoes_ids: [3] },
+    { id: 2, nome: 'Comum', permissoes_ids: [1, 3] }
+]
+
+const permissoes = [
+    { id: 1, nome: 'leitura' },
+    { id: 2, nome: 'escrita' },
+    { id: 3, nome: 'execução' }
 ]
 
 const usuarios = [{
     id: 1,
     nome: 'João Silva',
     email: 'jsilva@zemail.com',
-    idade: 29
+    idade: 29,
+    perfil_id: 2
 }, {
     id: 2,
     nome: 'Rafael Junior',
     email: 'rafajun@wemail.com',
-    idade: 31
+    idade: 31,
+    perfil_id: 1
 }, {
     id: 3,
     nome: 'Daniela Smith',
     email: 'danismi@uemail.com',
-    idade: 24
+    idade: 24,
+    perfil_id: 2
 }]
 
 const typeDefs = gql`
@@ -32,9 +41,15 @@ const typeDefs = gql`
         precoComDesconto: Float
     }
     
+    type Permissao {
+        id: Int
+        nome: String
+    }
+
     type Perfil {
         id: Int
         nome: String
+        permissoes: [Permissao]!
     }
     
     type Usuario {
@@ -44,6 +59,7 @@ const typeDefs = gql`
         idade: Int
         salario: Float
         vip: Boolean
+        perfil: Perfil!
     }
  
     # Pontos de entrada da sua API!
@@ -61,6 +77,15 @@ const typeDefs = gql`
 `
 
 const resolvers = {
+    Perfil: {
+        permissoes(perfil) {
+            const result = perfil.permissoes_ids.map(
+                id => permissoes.filter(permissao => permissao.id === id)[0]
+            )
+
+            return result
+        }
+    },
     Produto: {
         precoComDesconto(produto) {
             let result;
@@ -75,6 +100,10 @@ const resolvers = {
     Usuario: {
         salario(usuario) {
             return usuario.salario_real
+        },
+        perfil(usuario) {
+            const result = perfis.filter(perfil => perfil.id === usuario.perfil_id)
+            return result[0]
         }
     },
     Query: {
