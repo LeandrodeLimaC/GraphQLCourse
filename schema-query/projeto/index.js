@@ -1,7 +1,7 @@
 const { ApolloServer, gql } = require('apollo-server')
 
 const perfis = [
-    { id: 1, nome: 'Administrator', permissoes_ids: [3] },
+    { id: 1, nome: 'Administrator', permissoes_ids: [1, 2, 3] },
     { id: 2, nome: 'Comum', permissoes_ids: [1, 3] }
 ]
 
