@@ -12,7 +12,6 @@ const indiceUsuario = function (filtro) {
 }
 
 module.exports = {
-    // { nome, email, idade }
     novoUsuario(_, { dados }) {
         const emailExistente = usuarios.some(usuario => usuario.email === dados.email)
 
@@ -38,12 +37,12 @@ module.exports = {
         return excluidos ? excluidos[0] : null
     },
 
-    alterarUsuario(_, args) {
-        const i = usuarios.findIndex(usuario => usuario.id === args.id)
+    alterarUsuario(_, { filtro, dados }) {
+        const i = indiceUsuario(filtro)
 
         const usuario = {
             ...usuarios[i],
-            ...args
+            ...dados
         }
 
         usuarios.splice(i, 1, usuario)
