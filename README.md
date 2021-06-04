@@ -4,42 +4,35 @@ Repositório criado para registro de estudo durante o curso desenvolvido pela CO
 
 Requisitos
 ---
-###
 
-Começando
----
-Para iniciar o projeto será necessario clona-lo em uma pasta de sua preferência
+## Começando
 
-```shell
-git clone https://github.com/LeandrodeLimaC/GraphQLCourse.git
+```sh
+# Instala dependencias
+$ npm i
+
+# Incia o projeto
+$ npm start
 ```
 
-Navegue até a pasta criada e execute o seguinte comando para instalar as dependências do projeto
-```shell
-cd GraphQLCourse
-npm install
-```
+### Comandos
 
-Comando útil
+- `npm start`: Inicia o playground do graphQL
 
-Utilize o comando abaixo para inciar o nodemon
-```shell
-npm run start
-```
 
 Certificado
 ---
 
-Ainda em progresso
+Curso ainda em progresso
 
 #### Progresso
 
 - [x] Seção 1: Introdução
 - [x] Seção 2: Schema & Queries
-- [x] Seção 3: Mutations
-- [x] Seção 4: Banco de Dados & GraphQL
-- [x] Seção 5: Backend com GraphQL
-- [x] Seção 6: Projeto: Frontend Vue + Apollo Client
-- [x] Seção 7: Conclusão
-- [x] Seção 8: **Extra** Banco Relacional
-- [x] Seção 9: **Extra** Javascript Essencial
+- [ ] Seção 3: Mutations
+- [ ] Seção 4: Banco de Dados & GraphQL
+- [ ] Seção 5: Backend com GraphQL
+- [ ] Seção 6: Projeto: Frontend Vue + Apollo Client
+- [ ] Seção 7: Conclusão
+- [ ] Seção 8: **Extra** Banco Relacional
+- [ ] Seção 9: **Extra** Javascript Essencial
