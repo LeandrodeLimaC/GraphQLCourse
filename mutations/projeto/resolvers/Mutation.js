@@ -1,12 +1,11 @@
 const { usuarios, proximoId } = require('../data/db')
 
 module.exports = {
-    novoUsuario(_, { nome, email, idade }) {
+    // { nome, email, idade }
+    novoUsuario(_, args) {
         const novo = {
             id: proximoId(),
-            nome,
-            email,
-            idade,
+            ...args,
             perfil_id: 1,
             status: 'ATIVO'
         }
