@@ -9,3 +9,15 @@ const db = require('../config/db')
 //     .then(console.log)
 //     .catch(err => console.log(err.sqlMessage))
 //     .finally(() => db.destroy())
+
+const perfilSU = {
+    nome: 'root' + Math.random(),
+    rotulo: 'Super Usuário'
+}
+
+db.insert(perfilSU).into('perfis')
+    .then(res => res[0])
+    .then(id => `O código gerado foi ${id}`)
+    .then(console.log)
+    .catch(err => console.log(err.sqlMessage))
+    .finally(() => db.destroy())
