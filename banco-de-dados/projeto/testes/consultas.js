@@ -9,7 +9,13 @@ const db = require('../config/db')
 //     .then(console.log)
 //     .finally(() => db.destroy())
 
+// db.select('nome', 'id')
+//     .from('perfis')
+//     .then(console.log)
+//     .finally(() => db.destroy())
+
 db.select('nome', 'id')
     .from('perfis')
+    .limit(4).offset(2)
     .then(console.log)
     .finally(() => db.destroy())
