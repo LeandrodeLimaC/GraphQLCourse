@@ -5,6 +5,11 @@ const db = require('../config/db')
 //     .then(console.log)
 //     .finally(() => db.destroy())
 
-db('perfis').select('nome', 'id')
+// db('perfis').select('nome', 'id')
+//     .then(console.log)
+//     .finally(() => db.destroy())
+
+db.select('nome', 'id')
+    .from('perfis')
     .then(console.log)
     .finally(() => db.destroy())
