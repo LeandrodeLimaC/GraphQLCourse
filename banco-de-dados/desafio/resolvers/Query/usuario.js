@@ -2,7 +2,7 @@ const db = require('../../config/db')
 
 module.exports = {
     async usuarios() {
-        // implementar
+        return await db('usuarios')
     },
     async usuario(_, { filtro }) {
         // implementar
